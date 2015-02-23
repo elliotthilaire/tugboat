@@ -3,11 +3,11 @@ module Tugboat
     class ListRegions < Base
       def call(env)
         ocean = env['barge']
-        regions = ocean.regions.list.regions
+        regions = ocean.region.all.regions
 
         say "Regions:"
         regions.each do |region|
-          say "#{region.name} (id: #{region.id}) (slug: #{region.slug})"
+          say "#{region.name} (slug: #{region.slug})"
         end
 
         @app.call(env)
